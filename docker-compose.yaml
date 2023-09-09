@@ -1,0 +1,23 @@
+services:
+  front:
+    build:
+      context: "./to-do-list-front"
+    networks:
+      - ship
+    volumes:
+      - "./to-do-list-front/src:/app/src"
+    ports:
+      - "8000:8000"
+  backend:
+    build:
+      context: "./to-do-list-backend"
+    networks:
+      - ship
+    volumes:
+      - "./to-do-list-backend:/app/src"
+    ports:
+      - "3000:3000"
+
+networks:
+  ship:
+    name: ship_network
